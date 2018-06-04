@@ -19,7 +19,15 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+  assets:
+    - assets/ic_measure.png
+    - assets/ic_area.png
+    - assets/ic_volume.png
+    - assets/ic_scale.png
+    - assets/ic_currency.png
+    - assets/ic_time.png
+    - assets/ic_energy.png
+    - assets/ic_storage.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -2,7 +2,8 @@
 import 'package:flutter/widgets.dart';
 
 class Category {
-  IconData icon;
-  String name;
-  Category(this.name, this.icon);
+  String iconUrl;
+  String title;
+
+  Category({ Key key, this.title, this.iconUrl });
 }

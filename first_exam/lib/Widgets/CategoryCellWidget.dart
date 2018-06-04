@@ -14,15 +14,17 @@ class CategoryCellWidget extends StatefulWidget {
 class CategoryCellWidgetState extends State<CategoryCellWidget> {
   Category category;
   bool isSelected = false;
-
+  double size = 25.0;
 //  constructor
   CategoryCellWidgetState(this.category);
 
   @override
-  Widget build(BuildContext context) => new ListTile(
-      title: new Text(category.name),
-      leading: new Icon(category.icon),
-      onTap: this.onTab);
+  Widget build(BuildContext context) {
+    return new ListTile(
+        title: new Text(category.title),
+        leading: Image.asset(category.iconUrl, fit: BoxFit.contain, width: size, height: size,),
+        onTap: this.onTab);
+  }
 
   void onTab() {
     setState(() {
