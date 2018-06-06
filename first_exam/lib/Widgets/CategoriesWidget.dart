@@ -10,12 +10,12 @@ class CategoriesWidget extends StatelessWidget {
   List<CategoryCellWidget> children = new List();
   @override
   Widget build(BuildContext context) {
-    return new ListView(children: generateChildrenList());;
+    return new ListView(children: generateChildrenList());
   }
 
   List<CategoryCellWidget> generateChildrenList() {
     List<CategoryCellWidget> ls = generateCategories().map((item) {
-      return new CategoryCellWidget(item);
+      return new CategoryCellWidget(category: item,);
     }).toList();
     return ls;
   }
