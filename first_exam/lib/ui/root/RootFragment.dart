@@ -27,20 +27,20 @@ class RootFragmentState extends State<RootFragment> {
     var appbar = new AppBar(title: new Text(mCategories[mSelectedDrawerIndex].title),);
     return new Scaffold(appBar: appbar,
     drawer: getNavigationDrawer(),
-    body: _getDrawerItemWidget(mSelectedDrawerIndex),);
+    body: getDrawerItemWidget(mSelectedDrawerIndex),);
   }
 
   Drawer getNavigationDrawer() {
     return new Drawer(
-      child: new Column(children: <Widget>[getHeader(), new Column(children: generateChildrenList(),)],),
+      child: new Column(children: <Widget>[getHeader(), new Column(children: generateChildrenList(),)]),
     );
   }
 
-  _getDrawerItemWidget(int pos) {
+  getDrawerItemWidget(int pos) {
     return new SubRootTabFragment(index: pos,);
   }
 
-  _onSelectItem(int index) {
+  onSelectItem(int index) {
     setState(() => mSelectedDrawerIndex = index);
     Navigator.of(context).pop(); // close the drawer
   }
@@ -56,7 +56,7 @@ class RootFragmentState extends State<RootFragment> {
     List<CategoryCellWidget> drawerOptions = [];
     for(int i =0; i < mCategories.length; i++) {
       var cell = new CategoryCellWidget(category: mCategories[i], isSelected: i == mSelectedDrawerIndex,
-        onTabListener: ()=> _onSelectItem(i),);
+        onTabListener: ()=> onSelectItem(i),);
       drawerOptions.add(cell);
     }
 
