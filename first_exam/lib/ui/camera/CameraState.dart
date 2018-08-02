@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:first_exam/data/ResDimen.dart';
 import 'package:first_exam/ui/camera/CameraFragment.dart';
-import 'package:first_exam/ui/gallery/GalleryFragment.dart';
+import 'package:first_exam/ui/showImage/ShowImageFragment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:camera/camera.dart';
@@ -19,7 +19,8 @@ class CameraState extends State<CameraFragment> {
   bool isReady = false;
   CameraController mController;
   List<CameraDescription> mCameras;
-  String newestImage;
+  String mNewestImgPath;
+
   @override
   Widget build(BuildContext context) {
     if (mController == null || !mController.value.isInitialized) {
@@ -42,19 +43,19 @@ class CameraState extends State<CameraFragment> {
   }
 
   Widget getCameraActions() {
-    Widget actOpenGallery = newestImage == null ?
+    Widget actOpenGallery = mNewestImgPath == null ?
     new IconButton(icon: new Icon(Icons.picture_in_picture, color: Colors.white,),
         iconSize: SIZE_ICON_ACTION *2/3,
         onPressed: onTabOpenGallery) :
     new GestureDetector(
-      onTap: onTabOpenGallery,
+      onTap: onTapToShowImage,
       child: new Container(
         width: SIZE_ICON_ACTION,
         height: SIZE_ICON_ACTION,
         decoration: new BoxDecoration(
           color: const Color(0xff7c94b6),
           image: new DecorationImage(
-            image: new AssetImage(newestImage),
+            image: new AssetImage(mNewestImgPath),
             fit: BoxFit.cover,
           ),
           borderRadius: new BorderRadius.all(new Radius.circular(50.0)),
@@ -72,9 +73,9 @@ class CameraState extends State<CameraFragment> {
       onPressed: onClickTakingPicture,);
 
     Widget actVideo = new IconButton(
-      icon: new Icon(Icons.video_call, color: Colors.white,),
+      icon: new Icon(Icons.videocam_off, color: Colors.white,),
       iconSize: SIZE_ICON_ACTION*2/3,
-      onPressed: null
+      onPressed: onClickVideoCam
     );
 
     return new Container(
@@ -87,17 +88,24 @@ class CameraState extends State<CameraFragment> {
   }
 
   void onTabOpenGallery() {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> GalleryFragment()));
+  }
+
+  void onTapToShowImage() {
+    ShowImageFragment.start(context, mNewestImgPath ?? new File(mNewestImgPath));
   }
 
   void onClickTakingPicture() {
     takePicture().then((imgPath){
       if(mounted) {
         setState(() {
-          newestImage = imgPath;
+          mNewestImgPath = imgPath;
         });
       }
     });
+  }
+
+  void onClickVideoCam() {
+    showInSnackBar("This function isn't ready");
   }
 
   Future<bool> checkAndRequestPermission(Permission permission) async {
@@ -108,14 +116,6 @@ class CameraState extends State<CameraFragment> {
     }
   }
 
-  Future<bool> checkPermissions(Permission permission) async {
-    return SimplePermissions.checkPermission(permission);
-  }
-
-  Future<bool> requestPermissions(Permission permission) async {
-    return SimplePermissions.requestPermission(permission);
-  }
-
   @override
   void initState() {
     super.initState();
@@ -123,7 +123,7 @@ class CameraState extends State<CameraFragment> {
       if(isGranted) {
         setupCameras();
       }else {
-
+        isReady = false;
       }
     });
   }
