@@ -1,0 +1,10 @@
+const VAL_LENGTH = "Length";
+const VAL_AREA = "Area";
+const VAL_VOLUME = "Volume";
+const VAL_MASS = "Mass";
+const VAL_TIME = "Time";
+const VAL_DIGITAL_STORAGE = "Digital Storage";
+const VAL_ENERGY = "Energy";
+const VAL_CHECK_BATTERY = "Check Battery";
+const VAL_CAMERA = "Camera";
+const VAL_GALLERY = "Gallery";

@@ -2,6 +2,10 @@ name: first_exam
 description: A new Flutter application.
 
 dependencies:
+
+  path_provider: ^0.4.1
+  camera: ^0.2.1
+  simple_permissions: ^0.1.5
   flutter:
     sdk: flutter
 
@@ -28,6 +32,10 @@ flutter:
     - assets/ic_time.png
     - assets/ic_energy.png
     - assets/ic_storage.png
+    - assets/ic_battery_medium.png
+    - assets/ic_camera.png
+    - assets/ic_gallery.png
+    - assets/ic_act_take_pic.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

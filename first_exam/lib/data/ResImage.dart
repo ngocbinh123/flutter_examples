@@ -1,19 +1,13 @@
-class ResImage {
-  static final parentPath = "assets";
-  // ignore: non_constant_identifier_names
-  static final IMG_MEASURE = "$parentPath/ic_measure.png";
-  // ignore: non_constant_identifier_names
-  static final IMG_AREA = "$parentPath/ic_area.png";
-  // ignore: non_constant_identifier_names
-  static final IMG_VOLUME = "$parentPath/ic_volume.png";
-  // ignore: non_constant_identifier_names
-  static final IMG_SCALE = "$parentPath/ic_scale.png";
-  // ignore: non_constant_identifier_names
-  static final IMG_CURRENCY = "$parentPath/ic_currency.png";
-  // ignore: non_constant_identifier_names
-  static final IMG_TIME = "$parentPath/ic_time.png";
-  // ignore: non_constant_identifier_names
-  static final IMG_ENERGY = "$parentPath/ic_energy.png";
-  // ignore: non_constant_identifier_names
-  static final IMG_STORAGE = "$parentPath/ic_storage.png";
-}
+const parentPath = "assets";
+const IMG_MEASURE = "$parentPath/ic_measure.png";
+const IMG_AREA = "$parentPath/ic_area.png";
+const IMG_VOLUME = "$parentPath/ic_volume.png";
+const IMG_SCALE = "$parentPath/ic_scale.png";
+const IMG_CURRENCY = "$parentPath/ic_currency.png";
+const IMG_TIME = "$parentPath/ic_time.png";
+const IMG_ENERGY = "$parentPath/ic_energy.png";
+const IMG_STORAGE = "$parentPath/ic_storage.png";
+const IMG_BATTERY_MEDIUM = "$parentPath/ic_battery_medium.png";
+const IMG_CAMERA = "$parentPath/ic_camera.png";
+const IMG_GALLERY = "$parentPath/ic_gallery.png";
+const IMG_ACT_TAKE_PIC= "$parentPath/ic_act_take_pic.png";
