@@ -2,15 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:path/path.dart';
 
 class ShowImageFragment extends StatelessWidget {
   File image;
 
   static void start(BuildContext context,File image) {
     Navigator.push(context, MaterialPageRoute(builder: (context)=> ShowImageFragment(image)));
-
   }
+  
   ShowImageFragment(this.image);
 
   @override
